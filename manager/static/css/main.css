@@ -1,0 +1,30 @@
+
+/* FOOTER LINK TO HEAD */
+#footer-link-to-header {
+  text-decoration: underline;
+  color: black;
+}
+
+/* LOGO STYLES*/
+#logo-head{
+  color: #26a69a;
+  padding: 2px;
+  border:2px solid #26a69a;
+  border-radius: 10px;
+}
+
+#logo-head:hover{
+  color: #039be5;
+  border-color: #039be5;
+}
+
+/* TEXT HEADER */
+#header-text{
+  color: black;
+  font-size: 16px;
+}
+
+/* List of Appointments */
+#list-of-appointments{
+  font-size: 24px;
+}

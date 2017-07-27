@@ -1,0 +1,23 @@
+{% extends 'manager/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_title %} List of Appointments {% endblock meta_title %}
+
+{% block title %}
+  <!--Head of Content -->
+  List of Appointments
+
+  <!-- Add Appointment Button -->
+  <a class="btn" href="{% url 'appointments_add' %}">Add Appointment</a>
+{% endblock title %}
+
+{% block content %}
+
+  {% for appointment in appointments %}
+    <div class="collection">
+      <a class="collection-item" id="list-of-appointments"> {{ appointment }} {{ appointment.date1.start_time_1|date:'H:i' }}</a>
+    </div>
+  {% endfor %}
+
+{% endblock content %}
