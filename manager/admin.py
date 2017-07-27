@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Appointment, MultiTime
+
+# Register Appointment Model:
+admin.site.register(Appointment)
+# Register MultiTime Model:
+admin.site.register(MultiTime)
