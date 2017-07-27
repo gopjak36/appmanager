@@ -4,20 +4,17 @@
 
 {% block meta_title %} List of Appointments {% endblock meta_title %}
 
-{% block title %}
-  <!--Head of Content -->
-  List of Appointments
-
-  <!-- Add Appointment Button -->
-  <a class="btn" href="{% url 'appointments_add' %}">Add Appointment</a>
-{% endblock title %}
+{% block title %}List of Appointments{% endblock title %}
 
 {% block content %}
+  <!-- Add Appointment Button -->
+  <a class="btn btn-primary" id="btn-link" href="{% url 'appointments_add' %}">Add Appointment</a>
 
-  {% for appointment in appointments %}
-    <div class="collection">
-      <a class="collection-item" id="list-of-appointments"> {{ appointment }} {{ appointment.date1.start_time_1|date:'H:i' }}</a>
+  <!-- List of Appointments Start -->
+    <div class="list-group">
+      {% for appointment in appointments %}
+        <a class="list-group-item" id="list-item" href="#">{{ appointment }} {{ appointment.date1.start_time_1|date:'H:i' }}</a>
+      {% endfor %}
     </div>
-  {% endfor %}
-
+  <!-- List of Appointments End -->
 {% endblock content %}

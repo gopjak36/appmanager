@@ -1,30 +1,47 @@
+/* BTN LINK */
+#btn-link {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
 
-/* FOOTER LINK TO HEAD */
-#footer-link-to-header {
+/* Head Content Text */
+#head-content {
   text-decoration: underline;
-  color: black;
 }
 
-/* LOGO STYLES*/
-#logo-head{
-  color: #26a69a;
-  padding: 2px;
-  border:2px solid #26a69a;
-  border-radius: 10px;
+#list-item {
+  font-size: 22px;
 }
 
-#logo-head:hover{
-  color: #039be5;
-  border-color: #039be5;
+
+#head-link{
+  text-decoration: none;
 }
 
-/* TEXT HEADER */
-#header-text{
-  color: black;
+#head-text{
   font-size: 16px;
+  text-decoration: none;
+  color: black;
 }
 
-/* List of Appointments */
-#list-of-appointments{
-  font-size: 24px;
+#log-reg {
+  margin-top:15px;
+}
+
+#footer a{
+  color: white;
+}
+
+#created{
+  float:left;
+  text-decoration: none;
+}
+
+#ccc{
+  float: right;
+  text-decoration: none;
+}
+
+#footer-link-to-header{
+  text-decoration: underline;
 }
