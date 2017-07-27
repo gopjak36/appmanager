@@ -13,7 +13,7 @@
   <!-- List of Appointments Start -->
     <div class="list-group">
       {% for appointment in appointments %}
-        <a class="list-group-item" id="list-item" href="#">{{ appointment }} {{ appointment.date1.start_time_1|date:'H:i' }}</a>
+        <a class="list-group-item" id="list-item" href="{% url 'appointments_form' appointment.id %}">{{ appointment }}</a>
       {% endfor %}
     </div>
   <!-- List of Appointments End -->

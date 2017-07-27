@@ -1,0 +1,163 @@
+{% extends 'manager/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_title %} Form of Appointments {% endblock meta_title %}
+
+{% block title %}Form of Appointments: {{appointment}} {% endblock title %}
+
+{% block content %}
+  <form class="form-horizontal" action="{% url 'appointments_form' aid %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="title">Title:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="time" type="time" value="{{ appointment.title }}" disabled>
+      </div>
+    </div>
+
+      <div class="col-sm-12 aler alert-warning"> {{ errors.date }} </div>
+      <div class="col-sm-12 aler alert-warning"> {{ errors.time }}</div>
+
+    <div class="form-group">
+      <label class="col-sm-4 control-label radio" for="date1"><input type="radio" name="date"  value="{{ appointment.date1.id }}"/>{{ appointment.date1.date|date:"d M Y" }}</label>
+      <div class="col-sm-8">
+        {% if appointment.date1.start_time_1 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date1.id }} {{ appointment.date1.start_time_1|date:"H:i" }} {{ appointment.date1.end_time_1|date:"H:i" }}"> {{ appointment.date1.start_time_1|date:"H:i" }} - {{ appointment.date1.end_time_1|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date1.start_time_2 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date1.id }} {{ appointment.date1.start_time_2|date:"H:i" }} {{ appointment.date1.end_time_2|date:"H:i" }}"> {{ appointment.date1.start_time_2|date:"H:i" }} - {{ appointment.date1.end_time_2|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date1.start_time_3 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date1.id }} {{ appointment.date1.start_time_3|date:"H:i" }} {{ appointment.date1.end_time_3|date:"H:i" }}"> {{ appointment.date1.start_time_3|date:"H:i" }} - {{ appointment.date1.end_time_3|date:"H:i" }}
+        </label>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if appointment.date2 %}
+    <div class="form-group">
+      <label class="col-sm-4 control-label radio" for="date2"><input type="radio" name="date"  value="{{ appointment.date2.id }}"/>{{ appointment.date2.date|date:"d M Y" }}</label>
+      <div class="col-sm-8">
+        {% if appointment.date2.start_time_1 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date2.id }} {{ appointment.date2.start_time_1|date:"H:i" }} {{ appointment.date2.end_time_1|date:"H:i" }}"> {{ appointment.date2.start_time_1|date:"H:i" }} - {{ appointment.date2.end_time_1|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date2.start_time_2 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date2.id }} {{ appointment.date2.start_time_2|date:"H:i" }} {{ appointment.date2.end_time_2|date:"H:i" }}"> {{ appointment.date2.start_time_2|date:"H:i" }} - {{ appointment.date2.end_time_2|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date2.start_time_3 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date2.id }} {{ appointment.date2.start_time_3|date:"H:i" }} {{ appointment.date2.end_time_3|date:"H:i" }}"> {{ appointment.date2.start_time_3|date:"H:i" }} - {{ appointment.date2.end_time_3|date:"H:i" }}
+        </label>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if appointment.date3 %}
+    <div class="form-group">
+      <label class="col-sm-4 control-label radio" for="date3"><input type="radio" name="date"  value="{{ appointment.date3.id }}"/>{{ appointment.date3.date|date:"d M Y" }}</label>
+      <div class="col-sm-8">
+        {% if appointment.date2.start_time_1 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date3.id }} {{ appointment.date3.start_time_1|date:"H:i" }} {{ appointment.date3.end_time_1|date:"H:i" }}"> {{ appointment.date3.start_time_1|date:"H:i" }} - {{ appointment.date3.end_time_1|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date2.start_time_2 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date3.id }} {{ appointment.date3.start_time_2|date:"H:i" }} {{ appointment.date3.end_time_2|date:"H:i" }}"> {{ appointment.date3.start_time_2|date:"H:i" }} - {{ appointment.date3.end_time_2|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date2.start_time_3 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date3.id }} {{ appointment.date3.start_time_3|date:"H:i" }} {{ appointment.date3.end_time_3|date:"H:i" }}"> {{ appointment.date3.start_time_3|date:"H:i" }} - {{ appointment.date3.end_time_3|date:"H:i" }}
+        </label>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if appointment.date4 %}
+    <div class="form-group">
+      <label class="col-sm-4 control-label radio" for="date4"><input type="radio" name="date"  value="{{ appointment.date4.id }}"/>{{ appointment.date4.date|date:"d M Y" }}</label>
+      <div class="col-sm-8">
+        {% if appointment.date4.start_time_1 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date4.id }} {{ appointment.date4.start_time_1|date:"H:i" }} {{ appointment.date4.end_time_1|date:"H:i" }}"> {{ appointment.date4.start_time_1|date:"H:i" }} - {{ appointment.date4.end_time_1|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date4.start_time_2 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date4.id }} {{ appointment.date4.start_time_2|date:"H:i" }} {{ appointment.date4.end_time_2|date:"H:i" }}"> {{ appointment.date4.start_time_2|date:"H:i" }} - {{ appointment.date4.end_time_2|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date4.start_time_3 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date4.id }} {{ appointment.date4.start_time_3|date:"H:i" }} {{ appointment.date4.end_time_3|date:"H:i" }}"> {{ appointment.date4.start_time_3|date:"H:i" }} - {{ appointment.date4.end_time_3|date:"H:i" }}
+        </label>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if appointment.date5 %}
+    <div class="form-group">
+      <label class="col-sm-4 control-label radio" for="date5"><input type="radio" name="date"  value="{{ appointment.date5.id }}"/>{{ appointment.date5.date|date:"d M Y" }}</label>
+      <div class="col-sm-8">
+        {% if appointment.date5.start_time_1 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date5.id }} {{ appointment.date5.start_time_1|date:"H:i" }} {{ appointment.date5.end_time_1|date:"H:i" }}"> {{ appointment.date5.start_time_1|date:"H:i" }} - {{ appointment.date5.end_time_1|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date5.start_time_2 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date5.id }} {{ appointment.date5.start_time_2|date:"H:i" }} {{ appointment.date5.end_time_2|date:"H:i" }}"> {{ appointment.date5.start_time_2|date:"H:i" }} - {{ appointment.date5.end_time_2|date:"H:i" }}
+        </label>
+        {% endif %}
+        {% if appointment.date5.start_time_3 %}
+        <label class="radio">
+          <input type="radio" name="time" id="time" value="{{ appointment.date5.id }} {{ appointment.date5.start_time_3|date:"H:i" }} {{ appointment.date5.end_time_3|date:"H:i" }}"> {{ appointment.date5.start_time_3|date:"H:i" }} - {{ appointment.date5.end_time_3|date:"H:i" }}
+        </label>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="col-sm-12 aler alert-warning"> {{ errors.fullname }}</div>
+
+    <div class="form-group">
+      <label for="fullname" class="col-sm-2 control-label">Full Name*</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" name="fullname" id="fullname" value="{{ data.fullname }}" />
+      </div>
+    </div>
+
+    <div class="col-sm-12 aler alert-warning"> {{ errors.email }}</div>
+
+    <div class="form-group">
+      <label for="email" class="col-sm-2 control-label">Email*</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" name="email" id="fullname" value="{{ email }}" />
+      </div>
+    </div>
+
+
+    <div>
+      <input type="submit" value="Submit" name="add_button" class="btn btn-primary">
+      <input type="submit" value="Cancel" name="cancel_button" class="btn btn-danger">
+    </div>
+
+
+  </form>
+{% endblock content %}

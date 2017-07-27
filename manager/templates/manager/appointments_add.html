@@ -7,7 +7,7 @@
 {% block title %}Add Appointment{% endblock title %}
 
 {% block content %}
-
+{% if user.is_authenticated %}
     <form class="form-horizontal" action="{% url 'appointments_add' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
 
@@ -49,6 +49,8 @@
       </div>
 
     </form>
-
+{% else %}
+  <p> Only authenticated user can created Appointment</p>
+{% endif %}
 
 {% endblock content %}
