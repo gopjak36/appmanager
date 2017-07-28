@@ -46,8 +46,9 @@
 
           <ul class="nav nav-tabs" role="tablist">
             {% url 'appointments_list' as url_appointments_list %}
-            <li role="presentation" {% if request.path == url_appointments_list %} class="active" {% endif %}><a href="{% url 'appointments_list' %}">List of Appointments</a></li>
-            <li role="presentation"><a href="#">Submit Data</a></li>
+            <li role="presentation" {% if request.path == url_appointments_list %} class="active" {% endif %}><a href="{% url 'appointments_list' %}">Appointments</a></li>
+            {% url 'submit_data_list' as url_submit_data_list %}
+            <li role="presentation" {% if request.path == url_submit_data_list %} class="active" {% endif %}><a href="{% url 'submit_data_list' %}">Submit Data</a></li>
           </ul>
 
           <!-- Statu message Success or warning -->

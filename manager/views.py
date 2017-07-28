@@ -5,7 +5,7 @@ from django.contrib import messages
 from datetime import datetime
 from validate_email import validate_email
 
-from .models import Appointment, MultiTime
+from .models import Appointment, MultiTime, SubmitData
 
 def appointments_list(request):
     ''' Appointments List method '''
@@ -170,3 +170,9 @@ def appointments_form(request, aid):
         return HttpResponseRedirect(reverse('appointments_list'))
     else:
         return render(request, 'manager/appointments_form.html', {'aid':aid, 'appointment':appointment})
+
+def submit_data_list(request):
+    ''' Submit Data list of Appointments Form '''
+    submit_data_list = SubmitData.objects.all().order_by('date')
+
+    return render(request,'manager/submit_data_list.html',{'submit_data_list': submit_data_list })
