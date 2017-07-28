@@ -21,13 +21,11 @@ def appointments_add(request):
             data = {} # data collection for Appointment
             multitime = {} # data collection for MultiTime
             errors = {} # erros collection
-            postdata = {} # post data coollection
 
             # Validation data:
 
             # Title validation:
             title = request.POST.get('title')
-            postdata['title'] = title
             if not title:
                 errors['title'] = u"Please, enter the Title"
             else:
@@ -35,7 +33,6 @@ def appointments_add(request):
 
             # Date validation:
             date = request.POST.get('date')
-            postdata['date'] = date
             if not date:
                 errors['date'] = u"Please, enter the date."
             else:
@@ -48,7 +45,6 @@ def appointments_add(request):
 
             # Start_time_1 validation:
             start_time_1 = request.POST.get('start_time_1')
-            postdata['start_time_1'] = start_time_1
             if not start_time_1:
                 errors['start_time_1'] = u"Please, enter the Start Time."
             else:
@@ -61,7 +57,6 @@ def appointments_add(request):
 
             # End_time_1 validation:
             end_time_1 = request.POST.get('end_time_1')
-            postdata['end_time_1'] = end_time_1
             if not end_time_1:
                 errors['end_time_1'] = u"Please, enter the Start Time."
             else:
@@ -87,7 +82,7 @@ def appointments_add(request):
                 return HttpResponseRedirect(reverse('appointments_list'))
             else:
                 # return data with errors:
-                return render(request, 'manager/appointments_add.html', {'errors':errors, 'postdata':postdata})
+                return render(request, 'manager/appointments_add.html', {'errors':errors})
 
         # cancel button == PUSH:
         elif request.POST.get('cancel_button') is not None:
@@ -104,11 +99,13 @@ def appointments_form(request, aid):
     if request.POST.get('add_button') is not None:
         data = {} # data collection
         errors = {} # errors collection
+        postadata = {} # post data colelction
 
         # VALIDATION DATA
 
         # Time validation:
         time = request.POST.get('time') # value time from radion input
+        postadata['time'] = time
         if not time:
             errors['time'] = u"Please, select Time"
         else:
@@ -136,6 +133,7 @@ def appointments_form(request, aid):
 
         # Data validation:
         date = request.POST.get('date')
+        postadata['date'] = date
         if not date:
             errors['date'] = u"Please, select Date"
         elif not time:
@@ -165,7 +163,7 @@ def appointments_form(request, aid):
             else:
                 errors['email'] = u"Please, write correct Email"
 
-        return render(request, 'manager/appointments_form.html', {'aid':aid, 'appointment':appointment, 'errors':errors, 'data': data, 'email': email_data})
+        return render(request, 'manager/appointments_form.html', {'aid':aid, 'appointment':appointment, 'errors':errors, 'postdata': postadata})
     elif request.POST.get('cancel_button') is not None:
         # redirect to appointments list with cancel message:
         messages.warning(request,"Cancel Submit Appointment!")

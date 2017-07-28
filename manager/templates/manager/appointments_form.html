@@ -22,7 +22,7 @@
       <div class="col-sm-12 aler alert-warning"> {{ errors.time }}</div>
 
     <div class="form-group">
-      <label class="col-sm-4 control-label radio" for="date1"><input type="radio" name="date"  value="{{ appointment.date1.id }}"/>{{ appointment.date1.date|date:"d M Y" }}</label>
+      <label class="col-sm-4 control-label radio" for="date1"><input type="radio" name="date"  value="{{ appointment.date1.id }}" />{{ appointment.date1.date|date:"d M Y" }}</label>
       <div class="col-sm-8">
         {% if appointment.date1.start_time_1 %}
         <label class="radio">
@@ -44,7 +44,7 @@
 
     {% if appointment.date2 %}
     <div class="form-group">
-      <label class="col-sm-4 control-label radio" for="date2"><input type="radio" name="date"  value="{{ appointment.date2.id }}"/>{{ appointment.date2.date|date:"d M Y" }}</label>
+      <label class="col-sm-4 control-label radio" for="date2"><input type="radio" name="date"  value="{{ appointment.date2.id }}" />{{ appointment.date2.date|date:"d M Y" }}</label>
       <div class="col-sm-8">
         {% if appointment.date2.start_time_1 %}
         <label class="radio">
@@ -67,7 +67,7 @@
 
     {% if appointment.date3 %}
     <div class="form-group">
-      <label class="col-sm-4 control-label radio" for="date3"><input type="radio" name="date"  value="{{ appointment.date3.id }}"/>{{ appointment.date3.date|date:"d M Y" }}</label>
+      <label class="col-sm-4 control-label radio" for="date3"><input type="radio" name="date"  value="{{ appointment.date3.id }}" />{{ appointment.date3.date|date:"d M Y" }}</label>
       <div class="col-sm-8">
         {% if appointment.date2.start_time_1 %}
         <label class="radio">
@@ -90,7 +90,7 @@
 
     {% if appointment.date4 %}
     <div class="form-group">
-      <label class="col-sm-4 control-label radio" for="date4"><input type="radio" name="date"  value="{{ appointment.date4.id }}"/>{{ appointment.date4.date|date:"d M Y" }}</label>
+      <label class="col-sm-4 control-label radio" for="date4"><input type="radio" name="date"  value="{{ appointment.date4.id }}" />{{ appointment.date4.date|date:"d M Y" }}</label>
       <div class="col-sm-8">
         {% if appointment.date4.start_time_1 %}
         <label class="radio">
@@ -113,7 +113,7 @@
 
     {% if appointment.date5 %}
     <div class="form-group">
-      <label class="col-sm-4 control-label radio" for="date5"><input type="radio" name="date"  value="{{ appointment.date5.id }}"/>{{ appointment.date5.date|date:"d M Y" }}</label>
+      <label class="col-sm-4 control-label radio" for="date5"><input type="radio" name="date"  value="{{ appointment.date5.id }}" />{{ appointment.date5.date|date:"d M Y" }}</label>
       <div class="col-sm-8">
         {% if appointment.date5.start_time_1 %}
         <label class="radio">
@@ -139,7 +139,7 @@
     <div class="form-group">
       <label for="fullname" class="col-sm-2 control-label">Full Name*</label>
       <div class="col-sm-10">
-        <input class="form-control" type="text" name="fullname" id="fullname" value="{{ data.fullname }}" />
+        <input class="form-control" type="text" name="fullname" id="fullname" value="{{ request.POST.fullname }}" />
       </div>
     </div>
 
@@ -148,7 +148,7 @@
     <div class="form-group">
       <label for="email" class="col-sm-2 control-label">Email*</label>
       <div class="col-sm-10">
-        <input class="form-control" type="text" name="email" id="fullname" value="{{ email }}" />
+        <input class="form-control" type="text" name="email" id="fullname" value="{{ request.POST.email }}" />
       </div>
     </div>
 

@@ -14,7 +14,7 @@
       <div calss="form-group">
         <label for="title" class="col-sm-2 control-label">Title*</label>
         <div class="col-sm-10">
-          <input type="text" name="title" id="title" class="form-control" value="{{ postdata.title }}" />
+          <input type="text" name="title" id="title" class="form-control" value="{{ request.POST.title }}" />
           <span class="help-block">{{ errors.title }}</span>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <div calss="form-group">
         <label for="date" class="col-sm-2 control-label">Date*</label>
         <div class="col-sm-10">
-          <input type="text" name="date" id="date" placeholder="Example: 2017-08-17" class="form-control" value="{{ postdata.date }}" />
+          <input type="text" name="date" id="date" placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date }}" />
           <span class="help-block">{{ errors.date }}</span>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div calss="form-group">
         <label for="start_time_1" class="col-sm-2 control-label">Start Time*</label>
         <div class="col-sm-4">
-          <input type="text" name="start_time_1" id="start_time_1" placeholder="11:00" class="form-control" value="{{ postdata.start_time_1 }}" />
+          <input type="text" name="start_time_1" id="start_time_1" placeholder="11:00" class="form-control" value="{{ request.POST.start_time_1 }}" />
           <span class="help-block">{{ errors.start_time_1 }}</span>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div calss="form-group">
         <label for="end_time_1" class="col-sm-2 control-label"> End Time*</label>
         <div class="col-sm-4">
-          <input type="text" name="end_time_1" id="end_time_1" placeholder="12:00" class="form-control" value="{{ postdata.end_time_1 }}" />
+          <input type="text" name="end_time_1" id="end_time_1" placeholder="12:00" class="form-control" value="{{ request.POST.end_time_1 }}" />
           <span class="help-block">{{ errors.end_time_1 }}</span>
         </div>
       </div>
