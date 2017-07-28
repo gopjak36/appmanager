@@ -126,8 +126,6 @@ def appointments_form(request, aid):
             start_time = ''.join(time_s) # Strart Time final variable
             end_time = ''.join(time_e) # End Time final variable
             multitime = MultiTime.objects.get(id=multitime_id) # get MultiTime object
-
-            data['time'] = multitime
             data['start_time'] = start_time
             data['end_time'] = end_time
 
@@ -142,7 +140,7 @@ def appointments_form(request, aid):
             if date != multitime_id:
                 errors['date'] = u"Please, slect correct Date and Time "
             else:
-                data['date'] = date
+                data['date'] = multitime
 
         # Full Name Validation:
         fullname = request.POST.get('fullname')
@@ -163,7 +161,22 @@ def appointments_form(request, aid):
             else:
                 errors['email'] = u"Please, write correct Email"
 
-        return render(request, 'manager/appointments_form.html', {'aid':aid, 'appointment':appointment, 'errors':errors, 'postdata': postadata})
+        # Get title data:
+        title = Appointment.objects.get(id=appointment.id)
+        data['title'] = title
+
+        # Errors == False:
+        if not errors:
+            # create SubmitData object:
+            submit_data = SubmitData(**data)
+            # save object in database:
+            submit_data.save()
+            # redirect to appointments list with success message:
+            messages.success(request,'Success Submit Appointment!!')
+            return HttpResponseRedirect(reverse('appointments_list'))
+        else:
+            # return form with errros and save input data:
+            return render(request, 'manager/appointments_form.html', {'aid':aid, 'appointment':appointment, 'errors':errors, 'postdata': postadata})
     elif request.POST.get('cancel_button') is not None:
         # redirect to appointments list with cancel message:
         messages.warning(request,"Cancel Submit Appointment!")
