@@ -22,26 +22,283 @@
       <div calss="form-group">
         <label for="date" class="col-sm-2 control-label">Date*</label>
         <div class="col-sm-10">
-          <input type="text" name="date" id="date" placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date }}" />
+          <input type="text" name="date" id="date" class="datep" placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date }}" />
           <span class="help-block">{{ errors.date }}</span>
         </div>
       </div>
 
       <div calss="form-group">
-        <label for="start_time_1" class="col-sm-2 control-label">Start Time*</label>
+        <label for="start_time_1" class="col-sm-2 control-label">Start Time 1*</label>
         <div class="col-sm-4">
-          <input type="text" name="start_time_1" id="start_time_1" placeholder="11:00" class="form-control" value="{{ request.POST.start_time_1 }}" />
+          <input type="text" name="start_time_1" id="start_time_1" class="timep" placeholder="11:00" class="form-control" value="{{ request.POST.start_time_1 }}" />
           <span class="help-block">{{ errors.start_time_1 }}</span>
         </div>
       </div>
 
       <div calss="form-group">
-        <label for="end_time_1" class="col-sm-2 control-label"> End Time*</label>
+        <label for="end_time_1" class="col-sm-2 control-label"> End Time 1*</label>
         <div class="col-sm-4">
-          <input type="text" name="end_time_1" id="end_time_1" placeholder="12:00" class="form-control" value="{{ request.POST.end_time_1 }}" />
+          <input type="text" name="end_time_1" id="end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.end_time_1 }}" />
           <span class="help-block">{{ errors.end_time_1 }}</span>
         </div>
       </div>
+
+      <div calss="form-group">
+        <label for="start_time_2" class="col-sm-2 control-label">Start Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="start_time_2" id="start_time_2" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.start_time_2 }}" />
+          <span class="help-block">{{ errors.start_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="end_time_2" class="col-sm-2 control-label"> End Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="end_time_2" id="end_time_2" class="timep"  placeholder="13:00" class="form-control" value="{{ request.POST.end_time_2 }}" />
+          <span class="help-block">{{ errors.end_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="start_time_3" class="col-sm-2 control-label">Start Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="start_time_3" id="start_time_3" class="timep"  placeholder="9:00" class="form-control" value="{{ request.POST.start_time_3 }}" />
+          <span class="help-block">{{ errors.start_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="end_time_3" class="col-sm-2 control-label"> End Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="end_time_3" id="end_time_3" class="timep"  placeholder="10:00" class="form-control" value="{{ request.POST.end_time_3 }}" />
+          <span class="help-block">{{ errors.end_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="date2" class="col-sm-2 control-label">Date2</label>
+        <div class="col-sm-10">
+          <input type="text" name="date2" id="date" class="datep"  placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date2 }}" />
+          <span class="help-block">{{ errors.date2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_start_time_1" class="col-sm-2 control-label">Start Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_start_time_1" id="d2_start_time_1" class="timep"  placeholder="11:00" class="form-control" value="{{ request.POST.d2_start_time_1 }}" />
+          <span class="help-block">{{ errors.d2_start_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_end_time_1" class="col-sm-2 control-label"> End Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_end_time_1" id="d2_end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d2_end_time_1 }}" />
+          <span class="help-block">{{ errors.d2_end_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_start_time_2" class="col-sm-2 control-label">Start Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_start_time_2" id="d2_start_time_2" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d2_start_time_2 }}" />
+          <span class="help-block">{{ errors.d2_start_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_end_time_2" class="col-sm-2 control-label"> End Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_end_time_2" id="d2_end_time_2" class="timep"  placeholder="13:00" class="form-control" value="{{ request.POST.d2_end_time_2 }}" />
+          <span class="help-block">{{ errors.d2_end_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_start_time_3" class="col-sm-2 control-label">Start Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_start_time_3" id="d2_start_time_3" class="timep"  placeholder="9:00" class="form-control" value="{{ request.POST.d2_start_time_3 }}" />
+          <span class="help-block">{{ errors.d2_start_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d2_end_time_3" class="col-sm-2 control-label"> End Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d2_end_time_3" id="d2_end_time_3" class="timep"  placeholder="10:00" class="form-control" value="{{ request.POST.d2_end_time_3 }}" />
+          <span class="help-block">{{ errors.d2_end_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="date3" class="col-sm-2 control-label">Date3</label>
+        <div class="col-sm-10">
+          <input type="text" name="date3" id="date3" class="datep"  placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date3 }}" />
+          <span class="help-block">{{ errors.date3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_start_time_1" class="col-sm-2 control-label">Start Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_start_time_1" id="d3_start_time_1" class="timep"  placeholder="11:00" class="form-control" value="{{ request.POST.d3_start_time_1 }}" />
+          <span class="help-block">{{ errors.d3_start_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_end_time_1" class="col-sm-2 control-label"> End Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_end_time_1" id="d3_end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d3_end_time_1 }}" />
+          <span class="help-block">{{ errors.d3_end_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_start_time_2" class="col-sm-2 control-label">Start Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_start_time_2" id="d3_start_time_2" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d3_start_time_2 }}" />
+          <span class="help-block">{{ errors.d3_start_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_end_time_2" class="col-sm-2 control-label"> End Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_end_time_2" id="d3_end_time_2" class="timep"  placeholder="13:00" class="form-control" value="{{ request.POST.d3_end_time_2 }}" />
+          <span class="help-block">{{ errors.d3_end_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_start_time_3" class="col-sm-2 control-label">Start Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_start_time_3" id="d3_start_time_3" class="timep"  placeholder="9:00" class="form-control" value="{{ request.POST.d3_start_time_3 }}" />
+          <span class="help-block">{{ errors.d3_start_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d3_end_time_3" class="col-sm-2 control-label"> End Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d3_end_time_3" id="d3_end_time_3" class="timep"  placeholder="10:00" class="form-control" value="{{ request.POST.d3_end_time_3 }}" />
+          <span class="help-block">{{ errors.d3_end_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="date4" class="col-sm-2 control-label">Date4</label>
+        <div class="col-sm-10">
+          <input type="text" name="date4" id="date4" class="datep"  placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date4 }}" />
+          <span class="help-block">{{ errors.date4 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_start_time_1" class="col-sm-2 control-label">Start Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_start_time_1" id="d4_start_time_1" class="timep"  placeholder="11:00" class="form-control" value="{{ request.POST.d4_start_time_1 }}" />
+          <span class="help-block">{{ errors.d4_start_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_end_time_1" class="col-sm-2 control-label"> End Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_end_time_1" id="d4_end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d4_end_time_1 }}" />
+          <span class="help-block">{{ errors.d4_end_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_start_time_2" class="col-sm-2 control-label">Start Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_start_time_2" id="d4_start_time_2" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d4_start_time_2 }}" />
+          <span class="help-block">{{ errors.d4_start_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_end_time_2" class="col-sm-2 control-label"> End Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_end_time_2" id="d4_end_time_2" class="timep"  placeholder="13:00" class="form-control" value="{{ request.POST.d4_end_time_2 }}" />
+          <span class="help-block">{{ errors.d4_end_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_start_time_3" class="col-sm-2 control-label">Start Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_start_time_3" id="d4_start_time_3" class="timep"  placeholder="9:00" class="form-control" value="{{ request.POST.d4_start_time_3 }}" />
+          <span class="help-block">{{ errors.d4_start_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d4_end_time_3" class="col-sm-2 control-label"> End Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d4_end_time_3" id="d4_end_time_3" class="timep"  placeholder="10:00" class="form-control" value="{{ request.POST.d4_end_time_3 }}" />
+          <span class="help-block">{{ errors.d4_end_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="date5" class="col-sm-2 control-label">Date3</label>
+        <div class="col-sm-10">
+          <input type="text" name="date5" id="date5" class="datep"  placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date5 }}" />
+          <span class="help-block">{{ errors.date5 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_start_time_1" class="col-sm-2 control-label">Start Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_start_time_1" id="d5_start_time_1" class="timep"  placeholder="11:00" class="form-control" value="{{ request.POST.d5_start_time_1 }}" />
+          <span class="help-block">{{ errors.d5_start_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_end_time_1" class="col-sm-2 control-label"> End Time 1</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_end_time_1" id="d5_end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d5_end_time_1 }}" />
+          <span class="help-block">{{ errors.d5_end_time_1 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_start_time_2" class="col-sm-2 control-label">Start Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_start_time_2" id="d5_start_time_2" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.d5_start_time_2 }}" />
+          <span class="help-block">{{ errors.d5_start_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_end_time_2" class="col-sm-2 control-label"> End Time 2</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_end_time_2" id="d5_end_time_2" class="timep"  placeholder="13:00" class="form-control" value="{{ request.POST.d5_end_time_2 }}" />
+          <span class="help-block">{{ errors.d5_end_time_2 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_start_time_3" class="col-sm-2 control-label">Start Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_start_time_3" id="d5_start_time_3" class="timep"  placeholder="9:00" class="form-control" value="{{ request.POST.d5_start_time_3 }}" />
+          <span class="help-block">{{ errors.d5_start_time_3 }}</span>
+        </div>
+      </div>
+
+      <div calss="form-group">
+        <label for="d5_end_time_3" class="col-sm-2 control-label"> End Time 3</label>
+        <div class="col-sm-4">
+          <input type="text" name="d5_end_time_3" id="d5_end_time_3" class="timep"  placeholder="10:00" class="form-control" value="{{ request.POST.d5_end_time_3 }}" />
+          <span class="help-block">{{ errors.d5_end_time_3 }}</span>
+        </div>
+      </div>
+
 
       <div class="col-sm-12">
         <input type="submit" value="Submit" name="add_button" class="btn btn-primary">

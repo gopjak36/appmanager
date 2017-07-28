@@ -19,7 +19,6 @@ def appointments_add(request):
         # add button == PUSH:
         if request.POST.get('add_button') is not None:
             data = {} # data collection for Appointment
-            multitime = {} # data collection for MultiTime
             errors = {} # erros collection
 
             # Validation data:
@@ -31,6 +30,8 @@ def appointments_add(request):
             else:
                 data['title'] = title
 
+            # Date 1 validation:
+            multitime = {} # data 1 collection for MultiTime
             # Date validation:
             date = request.POST.get('date')
             if not date:
@@ -46,7 +47,7 @@ def appointments_add(request):
             # Start_time_1 validation:
             start_time_1 = request.POST.get('start_time_1')
             if not start_time_1:
-                errors['start_time_1'] = u"Please, enter the Start Time."
+                errors['start_time_1'] = u"Please, enter the Start Time 1"
             else:
                 try:
                     datetime.strptime(start_time_1, '%H:%M')
@@ -58,7 +59,7 @@ def appointments_add(request):
             # End_time_1 validation:
             end_time_1 = request.POST.get('end_time_1')
             if not end_time_1:
-                errors['end_time_1'] = u"Please, enter the Start Time."
+                errors['end_time_1'] = u"Please, enter the End Time 2"
             else:
                 try:
                     datetime.strptime(end_time_1, '%H:%M')
@@ -67,12 +68,444 @@ def appointments_add(request):
                 else:
                     multitime['end_time_1'] = end_time_1
 
+            # Start and End Time 2 validation:
+            start_time_2 = request.POST.get('start_time_2')
+            end_time_2 = request.POST.get('end_time_2')
+            if not start_time_2 and not end_time_2:
+                pass
+            elif not start_time_2 or not end_time_2:
+                if not start_time_2:
+                    errors['start_time_2'] = u"Enter Start Time 2"
+                elif not end_time_2:
+                    errors['end_time_2'] = u"Enter End Time 2"
+            elif start_time_2 and end_time_2:
+                try:
+                    datetime.strptime(start_time_2, '%H:%M')
+                except ValueError:
+                    errors['start_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                else:
+                    multitime['start_time_2'] = start_time_2
+                try:
+                    datetime.strptime(end_time_2, '%H:%M')
+                except ValueError:
+                    errors['end_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                else:
+                    multitime['end_time_2'] = end_time_2
+
+            # Start and End Time 3 validation:
+            start_time_3 = request.POST.get('start_time_3')
+            end_time_3 = request.POST.get('end_time_3')
+            if not start_time_3 and not end_time_3:
+                pass
+            elif not start_time_3 or not end_time_3:
+                if not start_time_3:
+                    errors['start_time_3'] = u"Enter Start Time 3"
+                elif not end_time_3:
+                    errors['end_time_3'] = u"Enter End Time 3"
+            elif start_time_3 and end_time_3:
+                try:
+                    datetime.strptime(start_time_3, '%H:%M')
+                except ValueError:
+                    errors['start_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                else:
+                    multitime['start_time_3'] = start_time_3
+                try:
+                    datetime.strptime(end_time_3, '%H:%M')
+                except ValueError:
+                    errors['end_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                else:
+                    multitime['end_time_3'] = end_time_3
+
+            # Date 2 validation:
+            multitime2 = {} # data 2 collection for MultiTime
+            # Date validation:
+            date2 = request.POST.get('date2')
+            if not date2:
+                pass
+            else:
+                try:
+                    datetime.strptime(date2, '%Y-%m-%d')
+                except ValueError:
+                    errors['date2'] = u"Enter the correct date format (Example: 2017-9-25)"
+                else:
+                    multitime2['date'] = date2
+
+            if date2:
+                # Start_time_1 validation:
+                d2_start_time_1 = request.POST.get('d2_start_time_1')
+                if not d2_start_time_1:
+                    errors['d2_start_time_1'] = u"Please, enter the Start Time 1"
+                else:
+                    try:
+                        datetime.strptime(d2_start_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d2_start_time_1'] = u"Enter the correct time format (Example: 11:30)"
+                    else:
+                        multitime2['start_time_1'] = d2_start_time_1
+
+                # End_time_1 validation:
+                d2_end_time_1 = request.POST.get('d2_end_time_1')
+                if not d2_end_time_1:
+                    errors['d2_end_time_1'] = u"Please, enter the End Time 2"
+                else:
+                    try:
+                        datetime.strptime(d2_end_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d2_end_time_1'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['end_time_1'] = d2_end_time_1
+
+                # Start and End Time 2 validation:
+                d2_start_time_2 = request.POST.get('d2_start_time_2')
+                d2_end_time_2 = request.POST.get('d2_end_time_2')
+                if not d2_start_time_2 and not d2_end_time_2:
+                    pass
+                elif not d2_start_time_2 or not d2_end_time_2:
+                    if not d2_start_time_2:
+                        errors['d2_start_time_2'] = u"Enter Start Time 2"
+                    elif not d2_end_time_2:
+                        errors['d2_end_time_2'] = u"Enter End Time 2"
+                elif d2_start_time_2 and d2_end_time_2:
+                    try:
+                        datetime.strptime(d2_start_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d2_start_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['start_time_2'] = d2_start_time_2
+                    try:
+                        datetime.strptime(d2_end_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d2_end_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['end_time_2'] = d2_end_time_2
+
+                # Start and End Time 3 validation:
+                d2_start_time_3 = request.POST.get('d2_start_time_3')
+                d2_end_time_3 = request.POST.get('d2_end_time_3')
+                if not d2_start_time_3 and not d2_end_time_3:
+                    pass
+                elif not d2_start_time_3 or not d2_end_time_3:
+                    if not d2_start_time_3:
+                        errors['d2_start_time_3'] = u"Enter Start Time 3"
+                    elif not d2_end_time_3:
+                        errors['d2_end_time_3'] = u"Enter End Time 3"
+                elif d2_start_time_3 and d2_end_time_3:
+                    try:
+                        datetime.strptime(d2_start_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d2_start_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['start_time_3'] = d2_start_time_3
+                    try:
+                        datetime.strptime(d2_end_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d2_end_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['end_time_3'] = d2_end_time_3
+            else:
+                pass
+
+            # Date 3 validation:
+            multitime3 = {} # data 3 collection for MultiTime
+            # Date validation:
+            date3 = request.POST.get('date3')
+            if not date3:
+                pass
+            else:
+                try:
+                    datetime.strptime(date3, '%Y-%m-%d')
+                except ValueError:
+                    errors['date3'] = u"Enter the correct date format (Example: 2017-9-25)"
+                else:
+                    multitime3['date'] = date3
+
+            if date3:
+                # Start_time_1 validation:
+                d3_start_time_1 = request.POST.get('d3_start_time_1')
+                if not d3_start_time_1:
+                    errors['d3_start_time_1'] = u"Please, enter the Start Time 1"
+                else:
+                    try:
+                        datetime.strptime(d3_start_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d3_start_time_1'] = u"Enter the correct time format (Example: 11:30)"
+                    else:
+                        multitime3['start_time_1'] = d3_start_time_1
+
+                # End_time_1 validation:
+                d3_end_time_1 = request.POST.get('d3_end_time_1')
+                if not d3_end_time_1:
+                    errors['d3_end_time_1'] = u"Please, enter the End Time 2"
+                else:
+                    try:
+                        datetime.strptime(d3_end_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d3_end_time_1'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime3['end_time_1'] = d3_end_time_1
+
+                # Start and End Time 2 validation:
+                d3_start_time_2 = request.POST.get('d3_start_time_2')
+                d3_end_time_2 = request.POST.get('d3_end_time_2')
+                if not d3_start_time_2 and not d3_end_time_2:
+                    pass
+                elif not d3_start_time_2 or not d3_end_time_2:
+                    if not d3_start_time_2:
+                        errors['d3_start_time_2'] = u"Enter Start Time 2"
+                    elif not d3_end_time_2:
+                        errors['d3_end_time_2'] = u"Enter End Time 2"
+                elif d3_start_time_2 and d3_end_time_2:
+                    try:
+                        datetime.strptime(d3_start_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d3_start_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime3['start_time_2'] = d3_start_time_2
+                    try:
+                        datetime.strptime(d3_end_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d3_end_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime2['end_time_2'] = d3_end_time_2
+
+                # Start and End Time 3 validation:
+                d3_start_time_3 = request.POST.get('d3_start_time_3')
+                d3_end_time_3 = request.POST.get('d3_end_time_3')
+                if not d3_start_time_3 and not d3_end_time_3:
+                    pass
+                elif not d3_start_time_3 or not d3_end_time_3:
+                    if not d3_start_time_3:
+                        errors['d3_start_time_3'] = u"Enter Start Time 3"
+                    elif not d3_end_time_3:
+                        errors['d3_end_time_3'] = u"Enter End Time 3"
+                elif d3_start_time_3 and d3_end_time_3:
+                    try:
+                        datetime.strptime(d3_start_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d3_start_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime3['start_time_3'] = d3_start_time_3
+                    try:
+                        datetime.strptime(d3_end_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d3_end_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime3['end_time_3'] = d3_end_time_3
+            else:
+                pass
+
+            # Date 4 validation:
+            multitime4 = {} # data 4 collection for MultiTime
+            # Date validation:
+            date4 = request.POST.get('date4')
+            if not date4:
+                pass
+            else:
+                try:
+                    datetime.strptime(date4, '%Y-%m-%d')
+                except ValueError:
+                    errors['date4'] = u"Enter the correct date format (Example: 2017-9-25)"
+                else:
+                    multitime4['date'] = date4
+
+            if date4:
+                # Start_time_1 validation:
+                d4_start_time_1 = request.POST.get('d4_start_time_1')
+                if not d4_start_time_1:
+                    errors['d4_start_time_1'] = u"Please, enter the Start Time 1"
+                else:
+                    try:
+                        datetime.strptime(d4_start_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d4_start_time_1'] = u"Enter the correct time format (Example: 11:30)"
+                    else:
+                        multitime4['start_time_1'] = d4_start_time_1
+
+                # End_time_1 validation:
+                d4_end_time_1 = request.POST.get('d4_end_time_1')
+                if not d4_end_time_1:
+                    errors['d4_end_time_1'] = u"Please, enter the End Time 2"
+                else:
+                    try:
+                        datetime.strptime(d4_end_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d4_end_time_1'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime4['end_time_1'] = d4_end_time_1
+
+                # Start and End Time 2 validation:
+                d4_start_time_2 = request.POST.get('d4_start_time_2')
+                d4_end_time_2 = request.POST.get('d4_end_time_2')
+                if not d4_start_time_2 and not d4_end_time_2:
+                    pass
+                elif not d4_start_time_2 or not d4_end_time_2:
+                    if not d4_start_time_2:
+                        errors['d4_start_time_2'] = u"Enter Start Time 2"
+                    elif not d4_end_time_2:
+                        errors['d4_end_time_2'] = u"Enter End Time 2"
+                elif d4_start_time_2 and d4_end_time_2:
+                    try:
+                        datetime.strptime(d4_start_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d4_start_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime4['start_time_2'] = d4_start_time_2
+                    try:
+                        datetime.strptime(d4_end_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d4_end_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime4['end_time_2'] = d4_end_time_2
+
+                # Start and End Time 3 validation:
+                d4_start_time_3 = request.POST.get('d4_start_time_3')
+                d4_end_time_3 = request.POST.get('d4_end_time_3')
+                if not d4_start_time_3 and not d4_end_time_3:
+                    pass
+                elif not d4_start_time_3 or not d4_end_time_3:
+                    if not d4_start_time_3:
+                        errors['d4_start_time_3'] = u"Enter Start Time 3"
+                    elif not d4_end_time_3:
+                        errors['d4_end_time_3'] = u"Enter End Time 3"
+                elif d4_start_time_3 and d4_end_time_3:
+                    try:
+                        datetime.strptime(d4_start_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d4_start_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime4['start_time_3'] = d4_start_time_3
+                    try:
+                        datetime.strptime(d4_end_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d4_end_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime4['end_time_3'] = d4_end_time_3
+            else:
+                pass
+
+            # Date 5 validation:
+            multitime5 = {} # data 5 collection for MultiTime
+            # Date validation:
+            date5 = request.POST.get('date5')
+            if not date5:
+                pass
+            else:
+                try:
+                    datetime.strptime(date5, '%Y-%m-%d')
+                except ValueError:
+                    errors['date5'] = u"Enter the correct date format (Example: 2017-9-25)"
+                else:
+                    multitime5['date'] = date5
+
+            if date5:
+                # Start_time_1 validation:
+                d5_start_time_1 = request.POST.get('d5_start_time_1')
+                if not d5_start_time_1:
+                    errors['d5_start_time_1'] = u"Please, enter the Start Time 1"
+                else:
+                    try:
+                        datetime.strptime(d5_start_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d5_start_time_1'] = u"Enter the correct time format (Example: 11:30)"
+                    else:
+                        multitime5['start_time_1'] = d5_start_time_1
+
+                # End_time_1 validation:
+                d5_end_time_1 = request.POST.get('d5_end_time_1')
+                if not d5_end_time_1:
+                    errors['d5_end_time_1'] = u"Please, enter the End Time 2"
+                else:
+                    try:
+                        datetime.strptime(d5_end_time_1, '%H:%M')
+                    except ValueError:
+                        errors['d5_end_time_1'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime5['end_time_1'] = d5_end_time_1
+
+                # Start and End Time 2 validation:
+                d5_start_time_2 = request.POST.get('d5_start_time_2')
+                d5_end_time_2 = request.POST.get('d5_end_time_2')
+                if not d5_start_time_2 and not d5_end_time_2:
+                    pass
+                elif not d5_start_time_2 or not d5_end_time_2:
+                    if not d5_start_time_2:
+                        errors['d5_start_time_2'] = u"Enter Start Time 2"
+                    elif not d5_end_time_2:
+                        errors['d5_end_time_2'] = u"Enter End Time 2"
+                elif d5_start_time_2 and d5_end_time_2:
+                    try:
+                        datetime.strptime(d5_start_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d5_start_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime5['start_time_2'] = d5_start_time_2
+                    try:
+                        datetime.strptime(d5_end_time_2, '%H:%M')
+                    except ValueError:
+                        errors['d5_end_time_2'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime5['end_time_2'] = d5_end_time_2
+
+                # Start and End Time 3 validation:
+                d5_start_time_3 = request.POST.get('d5_start_time_3')
+                d5_end_time_3 = request.POST.get('d5_end_time_3')
+                if not d5_start_time_3 and not d5_end_time_3:
+                    pass
+                elif not d5_start_time_3 or not d5_end_time_3:
+                    if not d5_start_time_3:
+                        errors['d5_start_time_3'] = u"Enter Start Time 3"
+                    elif not d5_end_time_3:
+                        errors['d5_end_time_3'] = u"Enter End Time 3"
+                elif d5_start_time_3 and d5_end_time_3:
+                    try:
+                        datetime.strptime(d5_start_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d5_start_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime5['start_time_3'] = d5_start_time_3
+                    try:
+                        datetime.strptime(d5_end_time_3, '%H:%M')
+                    except ValueError:
+                        errors['d5_end_time_3'] = u"Enter the correct time format (Example: 12:00)"
+                    else:
+                        multitime5['end_time_3'] = d5_end_time_3
+            else:
+                pass
+
             # IF Not Errors:
             if not errors:
                 multidate = MultiTime(**multitime) # Create MultiTime object
                 multidate.save() # Save MultiTime object in databse
 
                 data['date1'] = MultiTime.objects.get(id=multidate.id) # add MultiTime object into data
+
+                if date2:
+                    multidate2 = MultiTime(**multitime2)
+                    multidate2.save()
+                    data['date2'] = MultiTime.objects.get(id=multidate2.id)
+                else:
+                    pass
+
+                if date3:
+                    multidate3 = MultiTime(**multitime3)
+                    multidate3.save()
+                    data['date3'] = MultiTime.objects.get(id=multidate3.id)
+                else:
+                    pass
+
+                if date4:
+                    multidate4 = MultiTime(**multitime4)
+                    multidate4.save()
+                    data['date4'] = MultiTime.objects.get(id=multidate4.id)
+                else:
+                    pass
+
+                if date5:
+                    multidate5 = MultiTime(**multitime5)
+                    multidate5.save()
+                    data['date5'] = MultiTime.objects.get(id=multidate5.id)
+                else:
+                    pass
 
                 appointment = Appointment(**data) # Create Appointment object
                 appointment.save() # Save appointment object in database
