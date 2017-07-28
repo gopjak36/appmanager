@@ -18,12 +18,19 @@
       </div>
     </div>
 
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Avaliable Date:</label>
+        <label class="col-sm-2 control-label">Avaliable Time:</label>
+        <div class="col-sm-10">
+      </div>
+      {% if errors.date or errors.time %}
       <div class="col-sm-12 aler alert-warning"> {{ errors.date }} </div>
       <div class="col-sm-12 aler alert-warning"> {{ errors.time }}</div>
+      {% endif %}
 
     <div class="form-group">
       <label class="col-sm-4 control-label radio" for="date1"><input type="radio" name="date"  value="{{ appointment.date1.id }}" />{{ appointment.date1.date|date:"d M Y" }}</label>
-      <div class="col-sm-8">
+      <div class="col-sm-8" id="time1">
         {% if appointment.date1.start_time_1 %}
         <label class="radio">
           <input type="radio" name="time" id="time" value="{{ appointment.date1.id }} {{ appointment.date1.start_time_1|date:"H:i" }} {{ appointment.date1.end_time_1|date:"H:i" }}"> {{ appointment.date1.start_time_1|date:"H:i" }} - {{ appointment.date1.end_time_1|date:"H:i" }}
@@ -45,7 +52,7 @@
     {% if appointment.date2 %}
     <div class="form-group">
       <label class="col-sm-4 control-label radio" for="date2"><input type="radio" name="date"  value="{{ appointment.date2.id }}" />{{ appointment.date2.date|date:"d M Y" }}</label>
-      <div class="col-sm-8">
+      <div class="col-sm-8" id="time2">
         {% if appointment.date2.start_time_1 %}
         <label class="radio">
           <input type="radio" name="time" id="time" value="{{ appointment.date2.id }} {{ appointment.date2.start_time_1|date:"H:i" }} {{ appointment.date2.end_time_1|date:"H:i" }}"> {{ appointment.date2.start_time_1|date:"H:i" }} - {{ appointment.date2.end_time_1|date:"H:i" }}
@@ -68,7 +75,7 @@
     {% if appointment.date3 %}
     <div class="form-group">
       <label class="col-sm-4 control-label radio" for="date3"><input type="radio" name="date"  value="{{ appointment.date3.id }}" />{{ appointment.date3.date|date:"d M Y" }}</label>
-      <div class="col-sm-8">
+      <div class="col-sm-8" id="time3">
         {% if appointment.date2.start_time_1 %}
         <label class="radio">
           <input type="radio" name="time" id="time" value="{{ appointment.date3.id }} {{ appointment.date3.start_time_1|date:"H:i" }} {{ appointment.date3.end_time_1|date:"H:i" }}"> {{ appointment.date3.start_time_1|date:"H:i" }} - {{ appointment.date3.end_time_1|date:"H:i" }}
@@ -91,7 +98,7 @@
     {% if appointment.date4 %}
     <div class="form-group">
       <label class="col-sm-4 control-label radio" for="date4"><input type="radio" name="date"  value="{{ appointment.date4.id }}" />{{ appointment.date4.date|date:"d M Y" }}</label>
-      <div class="col-sm-8">
+      <div class="col-sm-8" id="time3">
         {% if appointment.date4.start_time_1 %}
         <label class="radio">
           <input type="radio" name="time" id="time" value="{{ appointment.date4.id }} {{ appointment.date4.start_time_1|date:"H:i" }} {{ appointment.date4.end_time_1|date:"H:i" }}"> {{ appointment.date4.start_time_1|date:"H:i" }} - {{ appointment.date4.end_time_1|date:"H:i" }}
@@ -114,7 +121,7 @@
     {% if appointment.date5 %}
     <div class="form-group">
       <label class="col-sm-4 control-label radio" for="date5"><input type="radio" name="date"  value="{{ appointment.date5.id }}" />{{ appointment.date5.date|date:"d M Y" }}</label>
-      <div class="col-sm-8">
+      <div class="col-sm-8" id="time5">
         {% if appointment.date5.start_time_1 %}
         <label class="radio">
           <input type="radio" name="time" id="time" value="{{ appointment.date5.id }} {{ appointment.date5.start_time_1|date:"H:i" }} {{ appointment.date5.end_time_1|date:"H:i" }}"> {{ appointment.date5.start_time_1|date:"H:i" }} - {{ appointment.date5.end_time_1|date:"H:i" }}

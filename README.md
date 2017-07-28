@@ -24,7 +24,7 @@
   user@ubuntu:~/newfolder$ source newvenv/bin/active
 ```
 
-6. Install Django from requirements.txt:
+6. Install requirements from requirements.txt:
 ```
   (newvenv)user@ubuntu:~/newfolder$ pip install -r requirements.txt
 ```

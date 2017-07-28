@@ -548,13 +548,30 @@ def appointments_form(request, aid):
             time_s = [] # Start Time
             time_e = [] # End Time
             # Go over value as enumerate string:
-            for index, element in enumerate(str(time)):
-              if index == 0:
-                  t_id.append(element) # save id
-              elif index in [2,3,4,5,6]:
-                  time_s.append(element) # save start time
-              elif index in [8,9,10,11,12]:
-                  time_e.append(element) # save end time
+            if len(time) == 13:
+                for index, element in enumerate(str(time)):
+                  if index == 0:
+                      t_id.append(element) # save id
+                  elif index in [2,3,4,5,6]:
+                      time_s.append(element) # save start time
+                  elif index in [8,9,10,11,12]:
+                      time_e.append(element) # save end time
+            elif len(time) == 14:
+                for index, element in enumerate(str(time)):
+                  if index in [0,1]:
+                      t_id.append(element) # save id
+                  elif index in [3,4,5,6,7]:
+                      time_s.append(element) # save start time
+                  elif index in [9,10,11,12,13]:
+                      time_e.append(element) # save end time
+            elif len(time) == 15:
+                for index, element in enumerate(str(time)):
+                  if index in [0,1,2]:
+                      t_id.append(element) # save id
+                  elif index in [4,5,6,7,8]:
+                      time_s.append(element) # save start time
+                  elif index in [10,11,12,13,14]:
+                      time_e.append(element) # save end time
             multitime_id = ''.join(t_id) # convert id to int
             start_time = ''.join(time_s) # Strart Time final variable
             end_time = ''.join(time_e) # End Time final variable

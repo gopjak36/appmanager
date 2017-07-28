@@ -45,15 +45,3 @@
 #footer-link-to-header{
   text-decoration: underline;
 }
-
-import os
-import sys
-
-path = '/home/appmanager/appmanager'
-if path not in sys.path:
-    sys.path.append(path)
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'appmanager.settings'
-
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
