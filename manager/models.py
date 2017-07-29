@@ -39,6 +39,12 @@ class Appointment(models.Model):
                 null=True,
                 verbose_name=u"Title")
 
+    email = models.EmailField(
+                max_length=100,
+                blank=False,
+                null=True,
+                verbose_name=u"Email")            
+
     def __unicode__(self):
         return u"%s" % self.title
 

@@ -33,6 +33,10 @@ def appointments_add(request):
             else:
                 data['title'] = title
 
+            # Add user Email to data:
+            email = request.user.email
+            data['email'] = email
+
             # Date 1 validation:
             multitime = {} # data 1 collection for MultiTime
             # Date validation:
@@ -639,9 +643,16 @@ def appointments_form(request, aid):
 
 def submit_data_list(request):
     ''' Submit Data list of Appointments Form '''
-    submit_data_list = SubmitData.objects.all().order_by('date')
+    if request.user.is_anonymous and request.user.is_authenticated == False:
+        messages.warning(request,'You are not Sign in!')
+        return HttpResponseRedirect(reverse('appointments_list'))
+    elif request.user.is_authenticated:
+        submit_data_list = SubmitData.objects.all().order_by('date')
 
-    return render(request,'manager/submit_data_list.html',{'submit_data_list': submit_data_list })
+        return render(request,'manager/submit_data_list.html',{'submit_data_list': submit_data_list })
+    else:
+        messages.warning(request,'You are not Sign in!')
+        return HttpResponseRedirect(reverse('appointments_list'))
 
 def authentication(request):
     ''' Authentication User method '''
@@ -706,3 +717,16 @@ def authentication(request):
     else:
         # inital Sign in Form
         return render(request, 'manager/authentication.html', {})
+
+def my_appointments_list(request):
+    ''' List of User Appointments '''
+    if request.user.is_anonymous and request.user.is_authenticated == False:
+        messages.warning(request,'You are not Sign in!')
+        return HttpResponseRedirect(reverse('appointments_list'))
+    elif request.user.is_authenticated:
+        my_appointments_list = Appointment.objects.filter(email=request.user.email)
+
+        return render(request, 'manager/my_appointments_list.html', {'my_appointments_list': my_appointments_list})
+    else:
+        messages.warning(request,'You are not Sign in')
+        return HttpResponseRedirect(reverse('appointments_list'))

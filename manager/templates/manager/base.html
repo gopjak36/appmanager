@@ -49,8 +49,10 @@
             {% url 'appointments_list' as url_appointments_list %}
             <li role="presentation" {% if request.path == url_appointments_list %} class="active" {% endif %}><a href="{% url 'appointments_list' %}">Appointments</a></li>
             {% if user.is_authenticated %}
+            {% url 'my_appointments' as url_my_appointments %}
+            <li role="presentation" {% if request.path == url_my_appointments %} class="active" {% endif %}><a href="{% url 'my_appointments' %}">My Appointmants</a></li>
             {% url 'submit_data_list' as url_submit_data_list %}
-            <li role="presentation" {% if request.path == url_submit_data_list %} class="active" {% endif %}><a href="{% url 'submit_data_list' %}">Submit Data</a></li>
+            <li role="presentation" {% if request.path == url_submit_data_list %} class="active" {% endif %}><a href="{% url 'submit_data_list' %}">Submit Appointmants</a></li>
             {% endif %}
           </ul>
 

@@ -15,6 +15,9 @@ urlpatterns = patterns('',
     # List of Submit Data from From Appointments url:
     url(r'^submitdata/$', 'manager.views.submit_data_list', name="submit_data_list"),
 
+    # List of User Appointments url:
+    url(r'^my/$', 'manager.views.my_appointments_list', name="my_appointments"),
+
     # List Authentication url:
     url(r'^auth/$', 'manager.views.authentication', name="auth"),
 

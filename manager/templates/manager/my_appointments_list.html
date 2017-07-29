@@ -1,0 +1,20 @@
+{% extends 'manager/base.html' %}
+
+{% load static from staticfiles %}
+
+{% block meta_title %} My Appointments {% endblock meta_title %}
+
+{% block title %}My Appointments{% endblock title %}
+
+{% block content %}
+  <!-- Add Appointment Button -->
+  <a class="btn btn-primary" id="btn-link" href="{% url 'appointments_add' %}">Add Appointment</a>
+
+  <!-- List of Appointments Start -->
+    <div class="list-group">
+      {% for my_appointment in my_appointments_list %}
+        <a class="list-group-item" id="list-item" href="{% url 'appointments_form' my_appointment.id %}">{{ my_appointment }} </a>
+      {% endfor %}
+    </div>
+  <!-- List of Appointments End -->
+{% endblock content %}
