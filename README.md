@@ -11,7 +11,7 @@
 
 3. Install virtualenv package:
   ```
-    user@ubuntu:~/newfolder$ pip install virtualenv
+    user@ubuntu:~/newfolder$ sudo pip install virtualenv
   ```
 
 4. Create new virtualenv without additional packages from python:
@@ -26,7 +26,7 @@
 
 6. Install requirements from requirements.txt:
 ```
-  (newvenv)user@ubuntu:~/newfolder$ pip install -r requirements.txt
+  (newvenv)user@ubuntu:~/newfolder$ sudo pip install -r requirements.txt
 ```
 
 7. Create database:

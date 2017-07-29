@@ -15,6 +15,12 @@ urlpatterns = patterns('',
     # List of Submit Data from From Appointments url:
     url(r'^submitdata/$', 'manager.views.submit_data_list', name="submit_data_list"),
 
+    # List Authentication url:
+    url(r'^auth/$', 'manager.views.authentication', name="auth"),
+
+    # Logout url:
+     url(r'^logout/$', 'django.contrib.auth.views.logout',  {'next_page': '/'}, name='logout'),
+
     # Admin Panel url:
     url(r'^admin/', include(admin.site.urls)),
 )

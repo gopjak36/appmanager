@@ -1,16 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from datetime import datetime
 from validate_email import validate_email
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 from .models import Appointment, MultiTime, SubmitData
 
 def appointments_list(request):
     ''' Appointments List method '''
+    appointments = Appointment.objects.all()
 
-    return render(request, 'manager/appointments_list.html', {'appointments': Appointment.objects.all()})
+    return render(request, 'manager/appointments_list.html', {'appointments':appointments})
 
 def appointments_add(request):
     ''' Appointments Add method '''
@@ -639,3 +642,67 @@ def submit_data_list(request):
     submit_data_list = SubmitData.objects.all().order_by('date')
 
     return render(request,'manager/submit_data_list.html',{'submit_data_list': submit_data_list })
+
+def authentication(request):
+    ''' Authentication User method '''
+    # Add Button == PUSH
+    if request.POST.get('add_button') is not None:
+        # help variables:
+        data = {} # data collection
+        errors = {} # errors collection
+        # GET DATA:
+        username = request.POST.get('name') # get name
+        email = request.POST.get('email') # get email
+        # name validation:
+        if not username:
+            errors['name'] = u"Enter Name, please!"
+        # email validation:
+        if not email:
+            errors['email'] = u"Enter Email, please!"
+        else:
+            email_valid = validate_email(email)
+            if email_valid == False:
+                errors['email'] = u"Enter correct Email, please!"
+        # Errors == False
+        if not errors:
+            # Authentication Data:
+            authentication = authenticate(username=username,email=email,password='1')
+            # Authentication == True:
+            if authentication is not None:
+                user = User.objects.get(username=username) # get user from data base
+                # Authentication Email == User Email:
+                if user.email == email:
+                    # Log in user:
+                    login(request,authentication)
+                    # refirect to appointments list with success message:
+                    messages.success(request,'You are authenticated!')
+                    return HttpResponseRedirect(reverse('appointments_list'))
+                # Authentication Email != User Email:
+                else:
+                    # redirect to appointments list with errors and input data:
+                    errors['email'] = u"It's not email from this name, enter correct email, please!"
+                    return render(request, 'manager/authentication.html', {'errors':errors})
+            # Authentication == False:
+            else:
+                # Create new user in database:
+                user = User.objects.create_user(username,email,'1')
+                user.save() # save this user
+                # Repeated Authentication
+                authentication = authenticate(username=username,email=email,password='1')
+                # Log in user:
+                login(request,authentication)
+                # redirect to appointments list with success message:
+                messages.success(request,'You are authenticated!')
+                return HttpResponseRedirect(reverse('appointments_list'))
+        # Errros == True
+        else:
+            # return errors and user input data:
+            return render(request, 'manager/authentication.html', {'errors':errors})
+    # Cancel Button == PUSH
+    elif request.POST.get('cancel'):
+        # redirect to appointments list wit cancel message:
+        messages.warning(request,'Sign in canceled!') # cancel message
+        return HttpResponseRedirect(reverse('appointments_list'))
+    else:
+        # inital Sign in Form
+        return render(request, 'manager/authentication.html', {})
