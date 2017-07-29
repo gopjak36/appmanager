@@ -1,5 +1,7 @@
 # Welcome to AppManager
 
+System of Appointments Management
+
 ## How to use project in my computer ?
 
 1. Open a terminal and create folder for project.
