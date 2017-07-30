@@ -274,7 +274,7 @@ def appointments_add(request):
                     except ValueError:
                         errors['d3_end_time_2'] = u"Enter the correct time format (Example: 12:00)"
                     else:
-                        multitime2['end_time_2'] = d3_end_time_2
+                        multitime3['end_time_2'] = d3_end_time_2
 
                 # Start and End Time 3 validation:
                 d3_start_time_3 = request.POST.get('d3_start_time_3')
@@ -641,13 +641,13 @@ def appointments_form(request, aid):
             try:
                 send_mail(subject, message, email, [author])
             except Exception:
-                messages.warning(request,"Failed Send Eamil!")
+                messages.warning(request,"Failed Send Eamil to Author!")
 
             # Send Email to User:
             try:
                 send_mail(subject, message, author, [email])
             except Exception:
-                messages.warning(request,"Failed Send Eamil!")
+                messages.warning(request,"Failed Send Eamil!(You email isn't exist)")
 
             # redirect to appointments list with success message:
             messages.success(request,'Success Submit Appointment and Send to your Email!')
