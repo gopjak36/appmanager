@@ -9,7 +9,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-    <div class="alert alert-success">You can create 5 date (with 3 time each). * -  These are required fields!  </div>
+    <div class="alert alert-success">You can create 5 dates (with 3 time each). * -  These are required fields!  </div>
 
     <form class="form-horizontal" action="{% url 'appointments_add' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}

@@ -1,6 +1,18 @@
 # Welcome to AppManager
 
-System of Appointments Management
+## System of Appointments Management:
+
+- Form for reserved the date and time for select Appointment.
+
+- All Appointments list and My Appointments list (authentication user only).
+
+- Add Appointments, 5 days with 3 time each (authentication user only).
+
+- Authentication with email and name without password.
+
+- Show submit Appointments (authentication user only).
+
+- Email system - send email with appointment data to author and user.
 
 ## How to use project in my computer ?
 

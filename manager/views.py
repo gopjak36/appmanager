@@ -609,22 +609,22 @@ def appointments_form(request, aid):
 
         # Email Validation
         email = request.POST.get('email')
-        email_data = email
         if not email:
             errors['email'] = u"Please, write you Email"
         else:
-            is_valid = validate_email(email,check_mx=True)
-            if is_valid == True:
-                data['email'] = email
-            else:
+            email_valid = validate_email(email,check_mx=True)
+            print(email_valid)
+            if email_valid == False:
                 errors['email'] = u"Please, write correct Email"
+            else:
+                data['email'] = email
 
         # Get title data:
         title = Appointment.objects.get(id=appointment.id)
         data['title'] = title
 
         # Get Author Email:
-        author = request.user.email
+        author = appointment.email
         data['author'] = author
 
         # Errors == False:
