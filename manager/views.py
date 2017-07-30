@@ -641,13 +641,13 @@ def appointments_form(request, aid):
             try:
                 send_mail(subject, message, email, [author])
             except Exception:
-                messages.warning(request,"Failed Send Eamil to Author!")
+                messages.warning(request,"Failed Send Email to Author!")
 
             # Send Email to User:
             try:
                 send_mail(subject, message, author, [email])
             except Exception:
-                messages.warning(request,"Failed Send Eamil!(You email isn't exist)")
+                messages.warning(request,"Failed Send Email(Your email isn't exist)")
 
             # redirect to appointments list with success message:
             messages.success(request,'Success Submit Appointment and Send to your Email!')
