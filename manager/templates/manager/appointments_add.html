@@ -8,6 +8,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
+    <div class="alert alert-success">You can create 5 date (with 3 time each). * -  These are required fields!  </div>
+
     <form class="form-horizontal" action="{% url 'appointments_add' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
 
@@ -15,15 +18,15 @@
         <label for="title" class="col-sm-2 control-label">Title*</label>
         <div class="col-sm-10">
           <input type="text" name="title" id="title" class="form-control" value="{{ request.POST.title }}" />
-          <span class="help-block">{{ errors.title }}</span>
+          <span class="help-block alert-warning">{{ errors.title }}</span>
         </div>
       </div>
 
       <div calss="form-group">
-        <label for="date" class="col-sm-2 control-label">Date*</label>
+        <label for="date" class="col-sm-2 control-label">Date1*</label>
         <div class="col-sm-10">
           <input type="text" name="date" id="date" class="datep" placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date }}" />
-          <span class="help-block">{{ errors.date }}</span>
+          <span class="help-block alert-warning">{{ errors.date }}</span>
         </div>
       </div>
 
@@ -31,7 +34,7 @@
         <label for="start_time_1" class="col-sm-2 control-label">Start Time 1*</label>
         <div class="col-sm-4">
           <input type="text" name="start_time_1" id="start_time_1" class="timep" placeholder="11:00" class="form-control" value="{{ request.POST.start_time_1 }}" />
-          <span class="help-block">{{ errors.start_time_1 }}</span>
+          <span class="help-block alert-warning">{{ errors.start_time_1 }}</span>
         </div>
       </div>
 
@@ -39,7 +42,7 @@
         <label for="end_time_1" class="col-sm-2 control-label"> End Time 1*</label>
         <div class="col-sm-4">
           <input type="text" name="end_time_1" id="end_time_1" class="timep"  placeholder="12:00" class="form-control" value="{{ request.POST.end_time_1 }}" />
-          <span class="help-block">{{ errors.end_time_1 }}</span>
+          <span class="help-block alert-warning">{{ errors.end_time_1 }}</span>
         </div>
       </div>
 
@@ -244,7 +247,7 @@
       </div>
 
       <div calss="form-group">
-        <label for="date5" class="col-sm-2 control-label">Date3</label>
+        <label for="date5" class="col-sm-2 control-label">Date5</label>
         <div class="col-sm-10">
           <input type="text" name="date5" id="date5" class="datep"  placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date5 }}" />
           <span class="help-block">{{ errors.date5 }}</span>

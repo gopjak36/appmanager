@@ -43,7 +43,7 @@ class Appointment(models.Model):
                 max_length=100,
                 blank=False,
                 null=True,
-                verbose_name=u"Email")            
+                verbose_name=u"Email")
 
     def __unicode__(self):
         return u"%s" % self.title
@@ -95,6 +95,12 @@ class SubmitData(models.Model):
                     blank=False,
                     null=True,
                     verbose_name=u"Email")
+
+    author = models.EmailField(
+                    max_length=100,
+                    blank=False,
+                    null=True,
+                    verbose_name=u"Author")                
 
     def __unicode__(self):
         return u"%s %s %s-%s" % (self.fullname, self.date, self.start_time, self.end_time)

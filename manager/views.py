@@ -6,6 +6,7 @@ from datetime import datetime
 from validate_email import validate_email
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 from .models import Appointment, MultiTime, SubmitData
 
@@ -612,7 +613,7 @@ def appointments_form(request, aid):
         if not email:
             errors['email'] = u"Please, write you Email"
         else:
-            is_valid = validate_email(email)
+            is_valid = validate_email(email,check_mx=True)
             if is_valid == True:
                 data['email'] = email
             else:
@@ -622,14 +623,34 @@ def appointments_form(request, aid):
         title = Appointment.objects.get(id=appointment.id)
         data['title'] = title
 
+        # Get Author Email:
+        author = request.user.email
+        data['author'] = author
+
         # Errors == False:
         if not errors:
             # create SubmitData object:
             submit_data = SubmitData(**data)
             # save object in database:
             submit_data.save()
+            # Email:
+            # Subject and Message create:
+            subject = u"New Appointment Submit | %s" % submit_data.title
+            message = u"%s from %s (%s). Date:%s .Time Start: %s - Time End: %s" % (submit_data.title, submit_data.fullname, submit_data.email, submit_data.date, submit_data.start_time, submit_data.end_time)
+            # Send Email to Author:
+            try:
+                send_mail(subject, message, email, [author])
+            except Exception:
+                messages.warning(request,"Failed Send Eamil!")
+
+            # Send Email to User:
+            try:
+                send_mail(subject, message, author, [email])
+            except Exception:
+                messages.warning(request,"Failed Send Eamil!")
+
             # redirect to appointments list with success message:
-            messages.success(request,'Success Submit Appointment!!')
+            messages.success(request,'Success Submit Appointment and Send to your Email!')
             return HttpResponseRedirect(reverse('appointments_list'))
         else:
             # return form with errros and save input data:
@@ -643,14 +664,19 @@ def appointments_form(request, aid):
 
 def submit_data_list(request):
     ''' Submit Data list of Appointments Form '''
-    if request.user.is_anonymous and request.user.is_authenticated == False:
+    # User is Anonymous and not Authenticated:
+    if request.user.is_anonymous and not request.user.is_authenticated:
+        # redirect to appointments list with warning messages:
         messages.warning(request,'You are not Sign in!')
         return HttpResponseRedirect(reverse('appointments_list'))
+    # User is Authenticated:
     elif request.user.is_authenticated:
-        submit_data_list = SubmitData.objects.all().order_by('date')
-
+        # Get User Submit Data Appointment:
+        submit_data_list = SubmitData.objects.filter(author=request.user.email).order_by('date')
+        messages.success(request,'All Submit Data send to your Email!')
         return render(request,'manager/submit_data_list.html',{'submit_data_list': submit_data_list })
     else:
+        # redirect to appointments list with warning messages:
         messages.warning(request,'You are not Sign in!')
         return HttpResponseRedirect(reverse('appointments_list'))
 
@@ -671,7 +697,7 @@ def authentication(request):
         if not email:
             errors['email'] = u"Enter Email, please!"
         else:
-            email_valid = validate_email(email)
+            email_valid = validate_email(email,check_mx=True)
             if email_valid == False:
                 errors['email'] = u"Enter correct Email, please!"
         # Errors == False
@@ -720,13 +746,19 @@ def authentication(request):
 
 def my_appointments_list(request):
     ''' List of User Appointments '''
-    if request.user.is_anonymous and request.user.is_authenticated == False:
+    # User is Anonymous and not Authenticated:
+    if request.user.is_anonymous and not request.user.is_authenticated:
+        # redirect to appointments list with warning messages:
         messages.warning(request,'You are not Sign in!')
         return HttpResponseRedirect(reverse('appointments_list'))
+    # User is Authenticated:
     elif request.user.is_authenticated:
+        # Get User created Appointment:
         my_appointments_list = Appointment.objects.filter(email=request.user.email)
-
+        # render page with User Appointments list:
+        messages.success(request,'All Submit Data send to your Email!')
         return render(request, 'manager/my_appointments_list.html', {'my_appointments_list': my_appointments_list})
     else:
+        # redirect to appointments list with warning messages:
         messages.warning(request,'You are not Sign in')
         return HttpResponseRedirect(reverse('appointments_list'))

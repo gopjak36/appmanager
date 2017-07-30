@@ -7,39 +7,43 @@
 {% block title %}Submit Data from My Appointments{% endblock title %}
 
 {% block content %}
-  <!-- Table of Content Start -->
-  <table class="table table-striped ">
+  {% if not submit_data_list %}
+    <p>You don't have Submit Appointments.</p>
+  {% else %}
+    <!-- Table of Content Start -->
+    <table class="table table-striped ">
 
-    <!-- Table Header Start -->
-    <thead class="table-bordered">
-      <tr>
-        <th>#</th>
-        <th>Appointment</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Date</th>
-        <th>Time Start - Time End</th>
-      </tr>
-    </thead>
-    <!-- Table Header End -->
+      <!-- Table Header Start -->
+      <thead class="table-bordered">
+        <tr>
+          <th>#</th>
+          <th>Appointment</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Time Start - Time End</th>
+        </tr>
+      </thead>
+      <!-- Table Header End -->
 
-    <!-- Table Body Start -->
-    <tbody class="table-hover">
-      <!-- Submit Data list Start -->
-      {% for data in submit_data_list %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ data.title }}</td>
-        <td>{{ data.fullname }}</td>
-        <td>{{ data.email }}</td>
-        <td>{{ data.date.date|date:"d M Y" }}</td>
-        <td>{{ data.start_time }} - {{ data.end_time }}</td>
-      </tr>
-      {% endfor %}
-      <!-- Submit Data list End -->
-    </tbody>
-    <!-- Table Body End -->
-  <table>
-  <!-- Table of Content End -->
+      <!-- Table Body Start -->
+      <tbody class="table-hover">
+        <!-- Submit Data list Start -->
+        {% for data in submit_data_list %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ data.title }}</td>
+          <td>{{ data.fullname }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.date.date|date:"d M Y" }}</td>
+          <td>{{ data.start_time }} - {{ data.end_time }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Submit Data list End -->
+      </tbody>
+      <!-- Table Body End -->
+    <table>
+    <!-- Table of Content End -->
+  {% endif %}  
 
 {% endblock content %}

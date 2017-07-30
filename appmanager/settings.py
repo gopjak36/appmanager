@@ -89,3 +89,9 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 from django.conf import global_settings
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("django.core.context_processors.request",)
+
+# SendGrid Setting for Email:
+EMAIL_HOST = 'smtp.sendgrid.net'
+from security_email import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

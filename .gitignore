@@ -2,3 +2,4 @@ myvenv
 *.pyc
 __pycache__
 db.sqlite3
+security_email.py
