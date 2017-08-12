@@ -16,9 +16,12 @@
         <p>You don't have create Appointments.</p>
       {% else %}
         {% for my_appointment in my_appointments_list %}
-          <a class="list-group-item" id="list-item" href="{% url 'appointments_form' my_appointment.id %}">{{ my_appointment }} </a>
+          <a class="list-group-item" id="list-item" href="{% url 'appointments_form'  my_appointment.id %}">
+            <h4 class="list-group-item-heading">{{  my_appointment }}</h4>
+            <p class="list-group-item-text">{{  my_appointment.description }}</p>
+          </a>
         {% endfor %}
-      {% endif %}  
+      {% endif %}
     </div>
   <!-- List of My Appointments End -->
 {% endblock content %}

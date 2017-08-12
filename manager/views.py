@@ -34,6 +34,13 @@ def appointments_add(request):
             else:
                 data['title'] = title
 
+            # Description validation:
+            description = request.POST.get('description')
+            if not description:
+                errors['description'] = u"Please, enter the Description"
+            else:
+                data['description'] = description
+
             # Add user Email to data:
             email = request.user.email
             data['email'] = email

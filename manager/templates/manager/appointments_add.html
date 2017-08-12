@@ -23,6 +23,15 @@
       </div>
 
       <div calss="form-group">
+        <label for="description" class="col-sm-2 control-label">Description*</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" name="description" id="description" rows="3" placeholder="Some description of your appointment">{{ request.POST.description }}</textarea>
+          <span class="help-block alert-warning">{{ errors.description }}</span>
+        </div>
+      </div>
+
+
+      <div calss="form-group">
         <label for="date" class="col-sm-2 control-label">Date1*</label>
         <div class="col-sm-10">
           <input type="text" name="date" id="date" class="datep" placeholder="Example: 2017-08-17" class="form-control" value="{{ request.POST.date }}" />
