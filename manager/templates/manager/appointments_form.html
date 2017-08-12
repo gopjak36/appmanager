@@ -2,9 +2,9 @@
 
 {% load static from staticfiles %}
 
-{% block meta_title %} Form of Appointments {% endblock meta_title %}
+{% block meta_title %} Submit to Appointment {% endblock meta_title %}
 
-{% block title %}Form of Appointments: {{appointment}} {% endblock title %}
+{% block title %}Submit to Appointment {% endblock title %}
 
 {% block content %}
   <form class="form-horizontal" action="{% url 'appointments_form' aid %}" method="post" enctype="multipart/form-data">
